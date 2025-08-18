@@ -1,0 +1,726 @@
+// ✅ 1. Strings
+
+// Reverse a string
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+
+// Check if a string is a palindrome
+function isPalindrome(str) {
+  const reversed = str.split('').reverse().join('');
+  return str === reversed;
+}
+
+// Count vowels in a string
+function countVowels(str) {
+  return (str.match(/[aeiou]/gi) || []).length;
+}
+
+// Capitalize the first letter of each word
+function capitalizeWords(str) {
+  return str.replace(/\b\w/g, c => c.toUpperCase());
+}
+
+// Truncate a string to a given length
+function truncate(str, length) {
+  return str.length > length ? str.slice(0, length) + '...' : str;
+}
+
+// Convert a string to camelCase
+function toCamelCase(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+}
+
+// Check if two strings are anagrams
+function isAnagram(str1, str2) {
+  const sort = str => str.split('').sort().join('');
+  return sort(str1) === sort(str2);
+}
+
+// Remove duplicate characters from a string
+function removeDuplicates(str) {
+  return [...new Set(str)].join('');
+}
+
+// Count occurrences of a character in a string
+function countChar(str, char) {
+  return str.split(char).length - 1;
+}
+
+// Reverse words in a sentence
+function reverseWords(sentence) {
+  return sentence.split(' ').reverse().join(' ');
+}
+
+// ✅ 2. Numbers
+
+// Check if a number is prime
+function isPrime(num) {
+  if (num <= 1) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+}
+
+// Return the factorial of a number
+function factorial(n) {
+  return n === 0 ? 1 : n * factorial(n - 1);
+}
+
+// Generate Fibonacci sequence up to n terms
+function fibonacci(n) {
+  let seq = [0, 1];
+  for (let i = 2; i < n; i++) {
+    seq.push(seq[i - 1] + seq[i - 2]);
+  }
+  return seq.slice(0, n);
+}
+
+// Check if a number is even or odd
+function isEven(num) {
+  return num % 2 === 0 ? 'Even' : 'Odd';
+}
+
+// Convert Celsius to Fahrenheit
+function celsiusToFahrenheit(c) {
+  return (c * 9) / 5 + 32;
+}
+
+// Find the largest among three numbers
+function largest(a, b, c) {
+  return Math.max(a, b, c);
+}
+
+// Sum digits of a number
+function sumDigits(num) {
+  return num.toString().split('').reduce((a, b) => a + +b, 0);
+}
+
+// Check if a number is an Armstrong number
+function isArmstrong(num) {
+  let sum = 0;
+  let temp = num;
+  let digits = num.toString().length;
+  while (temp > 0) {
+    let d = temp % 10;
+    sum += d ** digits;
+    temp = Math.floor(temp / 10);
+  }
+  return sum === num;
+}
+
+// Check if a year is a leap year
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+}
+
+// Find the power of a number (without Math.pow())
+function power(base, exponent) {
+  let result = 1;
+  for (let i = 0; i < exponent; i++) {
+    result *= base;
+  }
+  return result;
+}
+
+// ✅ 3. Arrays
+
+// Find the largest number in an array
+function largestInArray(arr) {
+  return Math.max(...arr);
+}
+
+// Remove duplicates from an array
+function removeArrayDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+// Sort an array of numbers (ascending)
+function sortArray(arr) {
+  return arr.sort((a, b) => a - b);
+}
+
+// Count even and odd numbers in an array
+function countEvenOdd(arr) {
+  let even = 0, odd = 0;
+  arr.forEach(n => n % 2 === 0 ? even++ : odd++);
+  return { even, odd };
+}
+
+// Sum all numbers in an array
+function sumArray(arr) {
+  return arr.reduce((a, b) => a + b, 0);
+}
+
+// Find the index of a given element in an array
+function findIndex(arr, val) {
+  return arr.indexOf(val);
+}
+
+// Reverse an array
+function reverseArray(arr) {
+  return arr.reverse();
+}
+
+// Find the second largest number in an array
+function secondLargest(arr) {
+  let sorted = [...new Set(arr)].sort((a, b) => b - a);
+  return sorted[1];
+}
+
+// ✅ 4. Objects
+
+// Count keys in an object
+function countKeys(obj) {
+  return Object.keys(obj).length;
+}
+
+// Merge two objects
+function mergeObjects(obj1, obj2) {
+  return { ...obj1, ...obj2 };
+}
+
+// Find the key with the highest value
+function keyWithMaxValue(obj) {
+  return Object.keys(obj).reduce((a, b) => obj[a] > obj[b] ? a : b);
+}
+
+// Convert an object to an array of key-value pairs
+function objectToArray(obj) {
+  return Object.entries(obj);
+}
+
+// Clone an object
+function cloneObject(obj) {
+  return { ...obj };
+}
+
+// Check if a key exists in an object
+function keyExists(obj, key) {
+  return key in obj;
+}
+
+// Sum all numeric values in an object
+function sumObjectValues(obj) {
+  return Object.values(obj).reduce((a, b) => typeof b === 'number' ? a + b : a, 0);
+}
+
+// Swap keys and values in an object
+function swapKeysValues(obj) {
+  const swapped = {};
+  for (let key in obj) {
+    swapped[obj[key]] = key;
+  }
+  return swapped;
+}
+
+// Create an object from two arrays (keys + values)
+function arraysToObject(keys, values) {
+  const obj = {};
+  keys.forEach((key, i) => obj[key] = values[i]);
+  return obj;
+}
+
+// Remove properties with null or undefined values
+function cleanObject(obj) {
+  Object.keys(obj).forEach(key => {
+    if (obj[key] == null) delete obj[key];
+  });
+  return obj;
+}
+
+// ✅ 5. Functions
+
+// Create a function to check if a string is a palindrome
+function palindrome(str) {
+  return str === str.split('').reverse().join('');
+}
+
+// Write a function to return the area of a rectangle
+function areaRectangle(length, width) {
+  return length * width;
+}
+
+// Convert minutes to seconds
+function minutesToSeconds(min) {
+  return min * 60;
+}
+
+// Sum of two numbers
+function add(a, b) {
+  return a + b;
+}
+
+// Return max of 3 numbers
+function maxOfThree(a, b, c) {
+  return Math.max(a, b, c);
+}
+
+// Count number of arguments
+function countArgs(...args) {
+  return args.length;
+}
+
+// Random number between two values
+function randomBetween(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Check if input is array
+function isArray(input) {
+  return Array.isArray(input);
+}
+
+// Repeat string n times
+function repeatString(str, n) {
+  return str.repeat(n);
+}
+
+// ✅ 6. Events (for HTML)
+// These should be in an HTML file with JavaScript.
+// Example:
+// <button onclick="alert('Button clicked')">Click</button>
+// For DOM events: use document.querySelector().addEventListener(...)
+
+// ✅ 7. DOM Manipulation
+
+// Select and change text
+// document.getElementById("id").textContent = "New Text";
+
+// Create and append new element
+// let newEl = document.createElement("p");
+// newEl.textContent = "Hello";
+// document.body.appendChild(newEl);
+
+// Remove an element
+// document.getElementById("id").remove();
+
+// Change style
+// document.getElementById("id").style.color = "blue";
+
+// Add row to table dynamically
+/*
+let table = document.getElementById("myTable");
+let row = table.insertRow();
+let cell1 = row.insertCell(0);
+let cell2 = row.insertCell(1);
+cell1.textContent = "New Cell1";
+cell2.textContent = "New Cell2";
+*/
+
+
+
+
+
+
+
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+//  REVERSE String
+// function reverseString(str){
+//     return str.split('').reverse().join('');
+// }
+
+// let str="abbsjb";
+// console.log(reverseString(str));
+// =========================================
+//Q.2 Check if string is palindrome
+// function isPalindrome(str){
+//     let rev=str.split('').reverse().join('');
+//     return str===rev;
+// }
+
+// let pal="abba";
+// console.log(isPalindrome(pal));
+// ==========================================
+
+// Q.3 Count vowels in a string
+// function cntVowel(str){
+//     return (str.match(/[aeiou]/gi) || []).length;
+// }
+
+// let str="aeihou";
+// console.log(cntVowel(str));
+// ==============================================
+
+// // Q.4 Capitalize the first letter of each word
+// function capitalizeWord(str){
+//     return str.split(" ").map(word=> word.charAt(0).toUpperCase()+word.slice(1)).join(" ");
+// }
+
+// let str="my name id tokito";
+// console.log(capitalizeWord(str));
+
+// Q.5 Truncate a string to a given length
+// function truncate(str, len){
+//     return str.length>len? str.slice(0, len)+"...":str;
+// }
+
+// let str="Hello, How are you?";
+// let len=5;
+
+// console.log(truncate(str, len));
+
+
+// Q. 6 Convert a string to camelCase
+// function toCamelCase(str){
+//     return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr)=>chr.toUpperCase());
+// }
+
+// let str="hello world";
+// console.log(toCamelCase(str));
+
+// Q.7// Remove duplicate characters from a string
+// function removeDuplicate(str){
+//     return [...new Set(str)].join('');
+// }
+
+// let str="hello world";
+// console.log(removeDuplicate(str));
+
+// Q.8Count occurrences of a character in a string
+// function countChar(str, char){
+//     return str.split(char).length-1;
+// }
+
+// let str="hello world";
+// let char='l';
+// console.log(countChar(str, char));
+
+// Q.9 // Reverse words in a sentence
+// function reverseWord(str){
+//     return str.split(' ').reverse().join(' ');
+// }
+// let str="hello world";
+// console.log(reverseWord(str));
+
+// #Numbers
+// Q.1 Check if a number is prime
+// function isPrime(num){
+//     if(num<=1) return false;
+//     for(let i=2;i<=Math.sqrt(num);i++){
+//         if(num%i===0){
+//             return false;
+//         }
+//         return true;
+//     }
+// }
+
+// let num=17;
+// console.log(isPrime(num));
+
+// Q.2 // Return the factorial of a number
+// function factorial(n){
+//     return n===0? 1: n*factorial(n-1);
+// }
+// let n=5;
+// console.log(factorial(n));
+
+// Q.3 // Generate Fibonacci sequence up to n terms
+// function fibonacci(n){
+//     let seq=[0,1];
+//     for(let i=2;i<n;i++){
+//         seq.push(seq[i-1]+seq[i-2]);
+//     }
+//     return seq.slice(0, n);
+// }
+
+// let n=5;
+// console.log(fibonacci(n));
+
+// Q.4  Check if a number is even or odd
+// function evenOrOdd(n){
+//     return n%2===0? 'Even': 'Odd';
+// }
+// let n=7;
+// console.log(evenOrOdd(n));
+
+// Q. 5 Convert Celsius to Fahrenheit
+// function celToFahrenheit(c){
+//     return (c*9)/5+32;
+// }
+// let c=90;
+// console.log(celToFahrenheit(c));
+
+// Q. 6 Convert Fahrenheit to Celsius
+// function fahrenheitToCel(f){
+//     return (f*5)/9-32;
+// }
+// let f=194;
+// console.log(fahrenheitToCel(f));
+
+// Q.7 Find Largest
+// function largest(a, b, c){
+//     return Math.max(a,b,c);
+// }
+
+// let a=10, b=40, c=60;
+// console.log(largest(a,b, c));
+
+// Q.8 Find Min
+// function smallest(a, b, c){
+//     return Math.min(a,b,c);
+// }
+
+// let a=10, b=40, c=60;
+// console.log(smallest(a,b, c));
+
+// Q.9 // Check if a year is a leap year
+// function isLeapYr(year){
+//     return (year%4===0 && year%100!=0) || year%400===0;
+// }
+
+// let year=1600;
+// console.log(isLeapYr(year));
+
+
+// Q. 10 // Find the power of a number (without Math.pow())
+function power(base, exponent){
+    let res=1;
+    for(let i=0;i<exponent;i++){
+        res*=base;
+    }
+    return res;
+}
+
+let base=3;
+let exponent=4;
+console.log(power(base, exponent));
+
+// Check if a number is an Armstrong number
+function isArmstrong(num) {
+  let sum = 0;
+  let temp = num;
+  let digits = num.toString().length;
+  while (temp > 0) {
+    let d = temp % 10;
+    sum += d ** digits;
+    temp = Math.floor(temp / 10);
+  }
+  return sum === num;
+}
+
+// Sum digits of a number
+function sumDigits(num) {
+  return num.toString().split('').reduce((a, b) => a + +b, 0);
+}
+
+
+// #Arrays
+// Q.1 Find the largest number in an array
+// function largestArr(arr){
+//     return Math.max(...arr);
+// }
+// let arr=[12, 14, 20, 60];
+// console.log(largestArr(arr));
+
+// Q2 Remove Duplicate from an array
+// function removeDuplicate(arr){
+//     return [...new Set(arr)];
+// }
+
+// let arr=[10, 40, 100, 50, 100];
+// console.log(removeDuplicate(arr));
+
+// Q3 Sort an arr in asc order
+// function sortAsc(Arr){
+//     return arr.sort((a,b)=>a-b);
+// }
+
+// let arr=[50, 10, 40, 20];
+// console.log(sortAsc(arr));
+
+// Q4 Sort an arr in desc order
+// function sortDesc(Arr){
+//     return arr.sort((a,b)=>b-a);
+// }
+
+// let arr=[50, 10, 40, 20];
+// console.log(sortDesc(arr));
+
+// Q.4 Count even and odd number in an array
+// function cntEvenOdd(arr){
+//     let even=0, odd=0;
+//     for(let num of arr){
+//         if(num%2==0){
+//             even++;
+//         }else{
+//             odd++;
+//         }
+//     }
+//     return {even, odd};
+// }
+
+// let arr=[40, 10, 15, 18, 19, 23];
+// console.log(cntEvenOdd(arr));
+
+// Q.5 Sum of all number in an arr
+// function sumArray(arr){
+//     return arr.reduce((a,b)=> a+b, 0);
+// }
+
+// let arr=[10, 40, 30, 50];
+// console.log(sumArray(arr));
+
+// Q.6 Find index of a given element in an array
+// function findIdx(arr, val){
+//     return arr.indexOf(val);
+// }
+
+// let arr=[22, 35, 10, 50];
+// let val=35;
+// console.log(findIdx(arr, val));
+
+// Q.7 Reverse an array
+// function reverse(arr){
+//     return arr.reverse();
+// }
+// let arr=[22, 35, 10, 50];
+// console.log(reverse(arr));
+
+// Q.8 Find the second largest number in an arrr
+// function secondLargest(arr){
+//     arr=arr.sort((a,b)=>b-a);
+//     return arr[1];
+// }
+// let arr=[10, 50, 40, 30];
+// console.log(secondLargest(arr));
+
+// OR
+// function secondLargest(arr){
+//     let sorted=[...new Set(arr)].sort((a,b)=>b-a);
+//     return sorted[1];
+// }
+// let arr=[10, 50, 40, 30];
+// console.log(secondLargest(arr));
+
+//#OBJECTS
+// Q.1 Count keys in an object
+// function cntKeys(obj){
+//     return Object.keys(obj).length;
+// }
+
+// let obj={
+//     name:"nik",
+//     age:21,
+//     address:"Ahmednagar"
+// };
+
+// console.log(cntKeys(obj));
+
+// Q.2 find key with hightest val
+// function keyWithMaxValue(obj){
+//     return Object.keys(obj).reduce((a,b)=> obj[a]>obj[b]?a:b);
+// }
+// let obj={
+//     name:"nik",
+//     age:21,
+//     address:"Ahmednagar"
+// };
+
+// console.log(keyWithMaxValue(obj));
+
+//  Q.3 convert an obj to arr
+// function objToArr(obj){
+//     return Object.entries(obj);
+// }
+
+//  let obj={
+//     name:"nik",
+//     age:21,
+//     address:"Ahmednagar"
+// };
+
+// console.log(objToArr(obj));
+
+// Q.4 clone an obj
+// function cloneObj(obj){
+//     return {...obj};
+// }
+//  let obj={
+//     name:"nik",
+//     age:21,
+//     address:"Ahmednagar"
+// };
+
+// console.log(cloneObj(obj));
+
+// Q.5 check key exist or not
+// function keyExists(obj, key){
+//     return key in obj;
+// }
+
+//  let obj={
+//     name:"nik",
+//     age:21,
+//     address:"Ahmednagar"
+// };
+
+// let key="rollNo";
+// console.log(keyExists(obj, key));
+
+// Q.6 Sum of all numeric values in anobject
+// function sumObjectValues(obj){
+//     return Object.values(obj).reduce((a,b)=> typeof b==='number'? a+b: a, 0);
+// }
+
+//  let obj={
+//     name:"nik",
+//     age:21,
+//     rollNo: 55,
+//     address:"Ahmednagar"
+// };
+
+// console.log(sumObjectValues(obj));
+
+// Q. 7 Swap keys and values in an object
+// function swapKeysValues(obj){
+//     const swapped={};
+//     for(let key in obj){
+//         swapped[obj[key]]=key;
+//     }
+//     return swapped;
+// }
+//  let obj={
+//     name:"nik",
+//     age:21,
+//     rollNo: 55,
+//     address:"Ahmednagar"
+// };
+
+// console.log(swapKeysValues(obj));
+
+// Q. Create an object from two arrays (keys + values)
+// function arrayToObject(keys, val){
+//     const obj={};
+//     keys.forEach((key,i)=>obj[key]=values[i]);
+//     return obj;
+// }
+
+// Q. Remove properties with null or undefinedvalues
+function cleanObject(obj){
+    Object.keys(obj).forEach(key=> {
+        if(obj[key]==null) delete obj[key];
+    });
+    return obj;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
