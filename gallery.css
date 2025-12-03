@@ -265,8 +265,25 @@ header .active{
   line-height: 1.6;
 }
 
+.filter-buttons {
+  margin-bottom: 20px;
+}
 
+.filter-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  background: #121111;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
 
+.filter-btn:hover {
+  background: #695d5d;
+}
     
 .video-cta-section {
   position: relative;
