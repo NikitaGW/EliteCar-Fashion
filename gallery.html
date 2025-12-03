@@ -51,13 +51,21 @@
     <div class="gallery-heading-bg">
   <h2 data-aos="fade-up">Our <span>Gallery</span></h2>
 <p data-aos="fade-up">Explore our best car detailing, polishing, and wrapping work that brings style and shine to life.</p>
+<div class="filter-buttons" data-aos="fade-up" style="text-align:center; margin: 30px 0;">
+  <button class="filter-btn" onclick="filterGallery('all')">All</button>
+  <button class="filter-btn" onclick="filterGallery('coating')">Ceramic Coating</button>
+  <button class="filter-btn" onclick="filterGallery('interior')">Interior Cleaning</button>
+  <button class="filter-btn" onclick="filterGallery('wrap')">Car Wraps</button>
+  <button class="filter-btn" onclick="filterGallery('wash')">Foam Wash</button>
+</div>
+
 </div>
 
 
 <section class="gallery-section" data-aos="fade-up">
   <div class="gallery-grid container">
 
-    <div class="gallery-item" data-aos="zoom-in">
+    <div class="gallery-item" data-category="coating" data-aos="zoom-in">
       <img src="img/gallery1.jpg"  loading="lazy"  alt="Ceramic Coating">
       <div class="gallery-info">
         <h5>Ceramic Coating Finish</h5>
@@ -65,7 +73,7 @@
       </div>
     </div>
 
-    <div class="gallery-item" data-aos="zoom-in">
+   <div class="gallery-item" data-category="interior" data-aos="zoom-in">
       <img src="img/gallery2.jpg"  loading="lazy"  alt="Interior Cleaning">
       <div class="gallery-info">
         <h5>Interior Deep Clean</h5>
@@ -73,7 +81,7 @@
       </div>
     </div>
 
-    <div class="gallery-item" data-aos="zoom-in">
+    <div class="gallery-item" data-category="coating" data-aos="zoom-in">
       <img src="img/gallery3.jpg"  loading="lazy"  alt="PPF Protection">
       <div class="gallery-info">
         <h5>Paint Protection Film</h5>
@@ -81,23 +89,21 @@
       </div>
     </div>
 
-    <div class="gallery-item" data-aos="zoom-in">
+    <div class="gallery-item" data-category="interior" data-aos="zoom-in">
       <img src="img/gallery4.jpg"  loading="lazy"  alt="Headlight Restoration">
       <div class="gallery-info">
         <h5>Headlight Restoration</h5>
         <p>Restore clarity and safety with our headlight renewal process.</p>
       </div>
     </div>
-
-    <div class="gallery-item" data-aos="zoom-in">
+<div class="gallery-item" data-category="coating" data-aos="zoom-in">
       <img src="img/gallery5.jpg"  loading="lazy"  alt="Alloy Wheel Polishing">
       <div class="gallery-info">
         <h5>Alloy Wheel Polishing</h5>
         <p>Luxurious finish with brake dust and grime removal.</p>
       </div>
     </div>
-
-    <div class="gallery-item" data-aos="zoom-in">
+<div class="gallery-item" data-category="wrap" data-aos="zoom-in">
       <img src="img/gallery6.jpg"  loading="lazy"  alt="Wrapping">
       <div class="gallery-info">
         <h5>Premium Car Wraps</h5>
@@ -105,7 +111,7 @@
       </div>
     </div>
 
-    <div class="gallery-item" data-aos="zoom-in">
+   <div class="gallery-item" data-category="interior" data-aos="zoom-in">
   <img src="img/gallery7.jpg"  loading="lazy"  alt="Engine Bay Detailing">
   <div class="gallery-info">
     <h5>Engine Bay Detailing</h5>
@@ -113,15 +119,14 @@
   </div>
 </div>
 
-<div class="gallery-item" data-aos="zoom-in">
+<div class="gallery-item" data-category="interior" data-aos="zoom-in">
   <img src="img/gallery8.jpg"  loading="lazy"  alt="Leather Seat Treatment">
   <div class="gallery-info">
     <h5>Leather Seat Treatment</h5>
     <p>Clean, condition, and protect leather surfaces for a supple finish.</p>
   </div>
 </div>
-
-<div class="gallery-item" data-aos="zoom-in">
+<div class="gallery-item" data-category="wash" data-aos="zoom-in">
   <img src="img/gallery9.jpg"  loading="lazy"  alt="Sunroof Polishing">
   <div class="gallery-info">
     <h5>Sunroof Polishing</h5>
@@ -129,7 +134,7 @@
   </div>
 </div>
 
-<div class="gallery-item" data-aos="zoom-in">
+<div class="gallery-item" data-category="interior" data-aos="zoom-in">
   <img src="img/gallery10.jpg"  loading="lazy"  alt="Odor Elimination">
   <div class="gallery-info">
     <h5>Odor Elimination</h5>
@@ -137,7 +142,7 @@
   </div>
 </div>
 
-<div class="gallery-item" data-aos="zoom-in">
+<div class="gallery-item" data-category="wash" data-aos="zoom-in">
   <img src="img/gallery11.jpg"  loading="lazy"  alt="Foam Wash">
   <div class="gallery-info">
     <h5>Touchless Foam Wash</h5>
@@ -145,7 +150,7 @@
   </div>
 </div>
 
-<div class="gallery-item" data-aos="zoom-in">
+<div class="gallery-item" data-category="wash" data-aos="zoom-in">
   <img src="img/gallery12.jpg" loading="lazy"  alt="Undercarriage Cleaning">
   <div class="gallery-info">
     <h5>Undercarriage Cleaning</h5>
@@ -220,6 +225,20 @@
 
       <div class="credit">create by abc designer | all rights Reserved.</div>
     </section>
+    <script>
+function filterGallery(category) {
+  let items = document.querySelectorAll('.gallery-item');
+
+  items.forEach(item => {
+    if (category === 'all' || item.dataset.category === category) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+</script>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <!-- footer section end -->
      <script src="pagesscript.js"></script>
