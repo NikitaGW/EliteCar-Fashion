@@ -216,6 +216,18 @@ a{
   font-size: 1.8rem;
 }
 
+.error-msg {
+  font-size: 13px;
+  display: block;
+  margin-top: 3px;
+  visibility: hidden;
+}
+
+.input-error {
+  border: 2px solid red !important;
+}
+
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #0b0b13;
